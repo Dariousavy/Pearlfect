@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEARLFECT — Ocean-Inspired Accessories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold: #D4B369;
+    --gold-deep: #A8843F;
+    --taupe: #6E6256;
+    --cream: #F1E8D7;
+    --sand: #EBDEC0;
+    --white: #FEFCFB;
+    --ink: #3B342B;
+    --tide: #5C8C86;
+    --tide-deep: #3F6864;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--white);
+    color: var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color: var(--gold-deep);
+    font-weight:500;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  img{ max-width:100%; display:block; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 22px 6vw;
+    background: rgba(254,252,251,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(110,98,86,0.12);
+    transition: padding 0.3s ease;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .brand img{ width:34px; height:auto; }
+  .brand span{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+    letter-spacing:0.14em;
+    font-weight:600;
+    color: var(--ink);
+  }
+
+  nav.links{ display:flex; gap:44px; }
+  nav.links a{
+    font-size:0.78rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color: var(--taupe);
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background: var(--gold-deep);
+    transition: width 0.35s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+  nav.links a:hover{ color: var(--ink); }
+
+  .nav-cta{
+    border:1px solid var(--taupe);
+    padding:9px 22px;
+    font-size:0.74rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    border-radius:2px;
+    transition: all 0.3s ease;
+  }
+  .nav-cta:hover{ background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+  .menu-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 140px 6vw 80px;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212,179,105,0.22), transparent 60%),
+      linear-gradient(180deg, #FEFCFB 0%, #F8F1E4 55%, var(--sand) 100%);
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 15% 25%, rgba(212,179,105,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 85% 18%, rgba(212,179,105,0.4), transparent),
+      radial-gradient(2px 2px at 70% 40%, rgba(212,179,105,0.35), transparent),
+      radial-gradient(1.5px 1.5px at 25% 60%, rgba(212,179,105,0.3), transparent),
+      radial-gradient(2px 2px at 92% 65%, rgba(212,179,105,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 45% 80%, rgba(212,179,105,0.4), transparent);
+    pointer-events:none;
+  }
+
+  .hero-logo{
+    width:88px;
+    margin-bottom:28px;
+    animation: floatY 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(168,132,63,0.25));
+  }
+
+  @keyframes floatY{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-10px); }
+  }
+
+  .hero .eyebrow{ margin-bottom:18px; }
+
+  .hero h1{
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    line-height:0.98;
+    color: var(--ink);
+    max-width: 16ch;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+
+  .hero p.sub{
+    margin-top:26px;
+    max-width:44ch;
+    font-size:1.08rem;
+    line-height:1.7;
+    color: var(--taupe);
+    font-weight:300;
+  }
+
+  .hero-actions{
+    margin-top:44px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .btn-primary, .btn-ghost{
+    padding:15px 36px;
+    font-size:0.76rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    border-radius:2px;
+    transition: all 0.35s ease;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--white);
+    border:1px solid var(--ink);
+  }
+  .btn-primary:hover{ background: var(--gold-deep); border-color: var(--gold-deep); }
+  .btn-ghost{
+    border:1px solid var(--taupe);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ border-color:var(--ink); background: rgba(110,98,86,0.06); }
+
+  .wave-divider{
+    position:absolute;
+    bottom:-2px; left:0; right:0;
+    line-height:0;
+  }
+  .wave-divider svg{ width:100%; height:auto; display:block; }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding: 130px 6vw; position:relative; }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin: 0 auto 70px;
+  }
+  .section-head .eyebrow{ display:block; margin-bottom:16px; }
+  .section-head h2{
+    font-size: clamp(2.2rem, 4.4vw, 3.2rem);
+    color: var(--ink);
+  }
+  .section-head p{
+    margin-top:18px;
+    color: var(--taupe);
+    line-height:1.75;
+    font-size:1rem;
+  }
+
+  .rule{
+    width:64px; height:1px;
+    background: var(--gold-deep);
+    margin: 22px auto 0;
+    position:relative;
+  }
+  .rule::after{
+    content:'';
+    position:absolute;
+    left:50%; top:50%;
+    width:5px; height:5px;
+    background: var(--gold-deep);
+    border-radius:50%;
+    transform: translate(-50%,-50%);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background: var(--white); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    max-width:1160px;
+    margin: 0 auto;
+    align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius:6px;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), transparent 45%),
+      linear-gradient(155deg, var(--sand) 0%, var(--cream) 55%, var(--gold) 130%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    box-shadow: 0 30px 70px -20px rgba(110,98,86,0.35);
+  }
+  .about-visual img{
+    width:56%;
+    filter: drop-shadow(0 20px 30px rgba(110,98,86,0.25));
+  }
+  .about-visual .ring{
+    position:absolute;
+    border:1px solid rgba(168,132,63,0.35);
+    border-radius:50%;
+  }
+  .about-visual .ring.r1{ width:80%; height:80%; }
+  .about-visual .ring.r2{ width:64%; height:64%; }
+
+  .about-text .eyebrow{ margin-bottom:16px; display:block; }
+  .about-text h2{
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    color: var(--ink);
+    margin-bottom:24px;
+  }
+  .about-text p{
+    color: var(--taupe);
+    line-height:1.85;
+    margin-bottom:18px;
+    font-size:1rem;
+  }
+  .about-text p:first-of-type::first-letter{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3.4rem;
+    float:left;
+    line-height:0.8;
+    padding:6px 10px 0 0;
+    color: var(--gold-deep);
+  }
+
+  .about-stats{
+    display:flex;
+    gap:44px;
+    margin-top:36px;
+    padding-top:32px;
+    border-top:1px solid rgba(110,98,86,0.15);
+  }
+  .about-stats div strong{
+    display:block;
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    color: var(--gold-deep);
+  }
+  .about-stats div span{
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--taupe);
+  }
+
+  /* ---------- COLLECTIONS ---------- */
+  .collections{
+    background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+  }
+  .coll-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:26px;
+    max-width:1240px;
+    margin:0 auto;
+  }
+  .coll-card{
+    background: var(--white);
+    border:1px solid rgba(110,98,86,0.14);
+    border-radius:4px;
+    padding:44px 26px 34px;
+    text-align:center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .coll-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 24px 50px -18px rgba(110,98,86,0.28);
+    border-color: var(--gold);
+  }
+  .coll-icon{
+    width:52px; height:52px;
+    margin:0 auto 22px;
+    color: var(--gold-deep);
+  }
+  .coll-card h3{
+    font-size:1.4rem;
+    color: var(--ink);
+    margin-bottom:10px;
+  }
+  .coll-card p{
+    font-size:0.88rem;
+    color: var(--taupe);
+    line-height:1.65;
+    margin-bottom:16px;
+  }
+  .coll-price{
+    font-family:'Jost';
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color: var(--gold-deep);
+    border-top:1px solid rgba(110,98,86,0.14);
+    padding-top:14px;
+  }
+
+  /* ---------- BANNER ---------- */
+  .banner{
+    position:relative;
+    background: linear-gradient(120deg, var(--tide-deep) 0%, var(--tide) 55%, #6E9C93 100%);
+    color: var(--white);
+    text-align:center;
+    padding: 120px 6vw;
+    overflow:hidden;
+  }
+  .banner::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    opacity:0.14;
+    background-image: repeating-radial-gradient(circle at 20% 30%, transparent 0, transparent 60px, rgba(255,255,255,0.5) 61px, transparent 62px);
+    background-size: 260px 260px;
+  }
+  .banner-inner{ position:relative; max-width:760px; margin:0 auto; }
+  .banner .eyebrow{ color: rgba(255,255,255,0.75); }
+  .banner h2{
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    font-style:italic;
+    line-height:1.25;
+    margin:18px 0 26px;
+  }
+  .banner p{
+    color: rgba(255,255,255,0.85);
+    font-size:1rem;
+    line-height:1.75;
+    max-width:52ch;
+    margin:0 auto;
+  }
+
+  /* ---------- VALUES ---------- */
+  .values{ background: var(--white); }
+  .val-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:1px;
+    background: rgba(110,98,86,0.14);
+    max-width:1200px;
+    margin:0 auto;
+    border:1px solid rgba(110,98,86,0.14);
+  }
+  .val-card{
+    background: var(--white);
+    padding: 46px 30px;
+    transition: background 0.4s ease;
+  }
+  .val-card:hover{ background: var(--cream); }
+  .val-num{
+    font-family:'Cormorant Garamond';
+    font-style:italic;
+    color: var(--gold);
+    font-size:1.1rem;
+    margin-bottom:18px;
+  }
+  .val-card h3{
+    font-size:1.35rem;
+    color: var(--ink);
+    margin-bottom:12px;
+  }
+  .val-card p{
+    font-size:0.88rem;
+    color: var(--taupe);
+    line-height:1.7;
+  }
+
+  /* ---------- VISIT ---------- */
+  .visit{
+    background: var(--ink);
+    color: var(--white);
+  }
+  .visit-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:80px;
+    max-width:1100px;
+    margin:0 auto;
+    align-items:center;
+  }
+  .visit .eyebrow{ color: var(--gold); }
+  .visit h2{
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin: 16px 0 22px;
+    color: var(--white);
+  }
+  .visit p{
+    color: rgba(254,252,251,0.7);
+    line-height:1.8;
+    margin-bottom:28px;
+  }
+  .visit-detail{
+    display:flex;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid rgba(254,252,251,0.14);
+  }
+  .visit-detail:last-of-type{ border-bottom:1px solid rgba(254,252,251,0.14); }
+  .visit-detail .label{
+    width:110px;
+    flex-shrink:0;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color: var(--gold);
+  }
+  .visit-detail .val{
+    font-size:0.94rem;
+    color: rgba(254,252,251,0.85);
+    line-height:1.6;
+  }
+
+  .visit-map{
+    position:relative;
+    aspect-ratio: 1/1;
+    border-radius:6px;
+    border:1px solid rgba(254,252,251,0.18);
+    background:
+      radial-gradient(circle at 50% 45%, rgba(212,179,105,0.18), transparent 55%),
+      linear-gradient(160deg, #2A2620 0%, #3B342B 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pin{
+    width:46px; height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pin-dot{
+    width:14px; height:14px;
+    border-radius:50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 6px rgba(212,179,105,0.18), 0 0 0 14px rgba(212,179,105,0.08);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow: 0 0 0 6px rgba(212,179,105,0.18), 0 0 0 14px rgba(212,179,105,0.08); }
+    50%{ box-shadow: 0 0 0 10px rgba(212,179,105,0.1), 0 0 0 20px rgba(212,179,105,0.04); }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--ink);
+    color: rgba(254,252,251,0.6);
+    padding: 50px 6vw 34px;
+    border-top:1px solid rgba(254,252,251,0.1);
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto 34px;
+  }
+  .footer-brand{ display:flex; align-items:center; gap:12px; }
+  .footer-brand img{ width:26px; }
+  .footer-brand span{
+    font-family:'Cormorant Garamond';
+    font-size:1.2rem;
+    letter-spacing:0.12em;
+    color: var(--white);
+  }
+  .footer-links{ display:flex; gap:34px; }
+  .footer-links a{
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: rgba(254,252,251,0.55);
+    transition: color 0.3s ease;
+  }
+  .footer-links a:hover{ color: var(--gold); }
+  .footer-bottom{
+    max-width:1200px;
+    margin:0 auto;
+    padding-top:26px;
+    border-top:1px solid rgba(254,252,251,0.1);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    color: rgba(254,252,251,0.4);
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    nav.links{ display:none; }
+    .about-grid{ grid-template-columns:1fr; gap:50px; }
+    .coll-grid{ grid-template-columns: repeat(2,1fr); }
+    .val-grid{ grid-template-columns: repeat(2,1fr); }
+    .visit-grid{ grid-template-columns:1fr; gap:50px; }
+  }
+  @media (max-width: 560px){
+    section{ padding:90px 6vw; }
+    .coll-grid{ grid-template-columns:1fr; }
+    .val-grid{ grid-template-columns:1fr; }
+    .about-stats{ gap:28px; flex-wrap:wrap; }
+    header{ padding:18px 6vw; }
+    .nav-cta{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="pearlfect-logo.png" alt="Pearlfect logo">
+    <span>PEARLFECT</span>
+  </div>
+  <nav class="links">
+    <a href="#about">About</a>
+    <a href="#collections">Collections</a>
+    <a href="#values">Values</a>
+    <a href="#visit">Visit</a>
+  </nav>
+  <a href="#visit" class="nav-cta">Find the Shop</a>
+</header>
+
+<section class="hero">
+  <img src="pearlfect-logo.png" alt="" class="hero-logo">
+  <span class="eyebrow">Handcrafted &middot; Ocean-Inspired &middot; Pandi, Bulacan</span>
+  <h1>Find the piece<br><em>that's you</em></h1>
+  <p class="sub">Pearls, clam shell, and seashell accessories crafted for the way you actually live &mdash; tarnish-free, humidity-proof, and made to be worn every day, not just admired.</p>
+  <div class="hero-actions">
+    <a href="#collections" class="btn-primary">Shop the Collection</a>
+    <a href="#about" class="btn-ghost">Our Story</a>
+  </div>
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,64 C240,110 480,10 720,50 C960,90 1200,20 1440,64 L1440,120 L0,120 Z" fill="#FEFCFB"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <img src="pearlfect-logo.png" alt="Pearlfect shell and pearl emblem">
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>Where the coast meets your everyday</h2>
+      <p>PEARLFECT is a locally based accessories house specializing in handcrafted, nature-inspired jewelry made from pearls, clam shell, and seashell. Every necklace, bracelet, and charm is designed to carry style, durability, and character &mdash; at prices that make sense for real life.</p>
+      <p>We design for individuality first. In a market full of mass-produced pieces, PEARLFECT gives you something with intention: personalized initials, birthstones, and a curated coastal aesthetic that reflects who you are, not who everyone else is.</p>
+      <div class="about-stats">
+        <div><strong>100%</strong><span>Tarnish-Free Finish</span></div>
+        <div><strong>Est.</strong><span>Pandi, Bulacan</span></div>
+        <div><strong>1:1</strong><span>Try-Before-You-Buy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collections" id="collections">
+  <div class="section-head reveal">
+    <span class="eyebrow">The Edit</span>
+    <h2>Coastal pieces, curated by hand</h2>
+    <p>Five categories, one aesthetic. Mix, layer, and gift &mdash; every piece is built to move from classroom to beach to barkada night out.</p>
+    <div class="rule"></div>
+  </div>
+  <div class="coll-grid">
+
+    <div class="coll-card reveal">
+      <svg class="coll-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M24 8c8 0 14 8 14 16 0 6-6 10-14 10S10 30 10 24C10 16 16 8 24 8Z"/>
+        <path d="M24 8v26M17 14v18M31 14v18"/>
+      </svg>
+      <h3>Necklaces</h3>
+      <p>Layered shell and pearl strands, coin pendants, coral-motif chains.</p>
+      <div class="coll-price">&#8369;150 &ndash; &#8369;299</div>
+    </div>
+
+    <div class="coll-card reveal">
+      <svg class="coll-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="24" cy="24" r="15"/>
+        <circle cx="24" cy="24" r="8"/>
+      </svg>
+      <h3>Bracelets</h3>
+      <p>Beaded, shell, pearl-strand, and charm bracelets for everyday stacking.</p>
+      <div class="coll-price">&#8369;150 &ndash; &#8369;299</div>
+    </div>
+
+    <div class="coll-card reveal">
+      <svg class="coll-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M24 6c-6 4-6 12 0 16 6-4 6-12 0-16Z"/>
+        <path d="M24 22v20"/>
+        <circle cx="24" cy="34" r="3"/>
+      </svg>
+      <h3>Earrings</h3>
+      <p>Pearl studs, shell huggies, and wave or starfish charm drops.</p>
+      <div class="coll-price">&#8369;150 &ndash; &#8369;299</div>
+    </div>
+
+    <div class="coll-card reveal">
+      <svg class="coll-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="20" cy="18" r="12"/>
+        <path d="M28 27 L38 40"/>
+      </svg>
+      <h3>Vanity Sets</h3>
+      <p>Shell-shaped mirrors and pearl-handle combs, a gift-able everyday essential.</p>
+      <div class="coll-price">&#8369;50 &ndash; &#8369;150</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="banner">
+  <div class="banner-inner reveal">
+    <span class="eyebrow">The Aesthetic</span>
+    <h2>&ldquo;Coastal core isn't a trend for us &mdash; it's the whole tide.&rdquo;</h2>
+    <p>Every piece is designed around the feeling of the shoreline: soft, sun-warmed, unhurried. Wear it as a mood, not just a material.</p>
+  </div>
+</section>
+
+<section class="values" id="values">
+  <div class="section-head reveal">
+    <span class="eyebrow">What We Stand For</span>
+    <h2>Crafted with intention</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="val-grid">
+    <div class="val-card reveal">
+      <div class="val-num">I.</div>
+      <h3>Individuality</h3>
+      <p>We celebrate uniqueness with designs that let you express who you are, on your own terms.</p>
+    </div>
+    <div class="val-card reveal">
+      <div class="val-num">II.</div>
+      <h3>Meaningfulness</h3>
+      <p>Every piece is made with intention, so it becomes a symbol of identity, not just an accessory.</p>
+    </div>
+    <div class="val-card reveal">
+      <div class="val-num">III.</div>
+      <h3>Passion</h3>
+      <p>Creativity and dedication go into every handcrafted piece, from first sketch to final polish.</p>
+    </div>
+    <div class="val-card reveal">
+      <div class="val-num">IV.</div>
+      <h3>Eco-Friendly</h3>
+      <p>Responsible sourcing and ethical production, so the coast we're inspired by stays protected.</p>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="visit-grid">
+    <div class="reveal">
+      <span class="eyebrow">Come See Us</span>
+      <h2>Visit the shop</h2>
+      <p>Try before you buy, in a bright, browsable space built for slow shopping &mdash; bring the barkada.</p>
+      <div class="visit-detail">
+        <span class="label">Location</span>
+        <span class="val">Poblacion, Pandi, Bulacan &mdash; near College of Mary Immaculate</span>
+      </div>
+      <div class="visit-detail">
+        <span class="label">Hours</span>
+        <span class="val">Monday &ndash; Saturday, 10:00 AM &ndash; 6:00 PM</span>
+      </div>
+      <div class="visit-detail">
+        <span class="label">Online</span>
+        <span class="val">Also on Shopee &amp; TikTok Shop &mdash; search PEARLFECT</span>
+      </div>
+    </div>
+    <div class="visit-map reveal">
+      <div class="pin"><div class="pin-dot"></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="pearlfect-logo.png" alt="Pearlfect logo">
+      <span>PEARLFECT</span>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#collections">Collections</a>
+      <a href="#values">Values</a>
+      <a href="#visit">Visit</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Pearlfect. Handcrafted in Pandi, Bulacan.</span>
+    <span>Find the piece that's you.</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>
